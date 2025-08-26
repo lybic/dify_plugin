@@ -1,0 +1,26 @@
+identity:
+    name: get_screenshot
+    author: "lybic-team"
+    label:
+        en_US: "Get Sandbox Screenshot"
+        zh_Hans: "获取沙盒截图"
+description:
+    human:
+        en_US: "Get a screenshot from a Lybic sandbox."
+        zh_Hans: "从Lybic沙盒获取屏幕截图。"
+    llm: "Get a screenshot from a Lybic sandbox and return the image URL(dify will automatically load this screenshot)."
+parameters:
+    - name: sandbox_id
+      type: string
+      required: true
+      label:
+          en_US: "Sandbox ID"
+          zh_Hans: "沙盒ID"
+      human_description:
+          en_US: "The ID of the sandbox to get the screenshot from."
+          zh_Hans: "要获取屏幕截图的沙盒ID。"
+      llm_description: "The ID of the sandbox to get the screenshot from."
+      form: llm
+extra:
+    python:
+        source: tools/get_screenshot.py

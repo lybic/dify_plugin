@@ -53,12 +53,13 @@ identity:
 
 tools:
   - tools/lybic-sandbox.yaml
+  - tools/get_screenshot.yaml
 extra:
   python:
     source: provider/lybic-sandbox.py
 
 credentials_for_provider:
-  lybic_orgnization_id:
+  lybic_organization_id:
     type: secret-input
     required: true
     label:
@@ -83,4 +84,17 @@ credentials_for_provider:
       help:
         en_US: "Lybic API Key is used to authenticate requests to the lybic.ai services API. Get the API Key"
         zh_Hans: "Lybic API Key 用于认证请求到 lybic.ai API。 获取 API Key。"
+      url: https://lybic.ai/
+  lybic_api_endpoint:
+      type: text
+      required: false
+      label:
+          en_US: "Lybic API Endpoint"
+          zh_Hans: "Lybic API Endpoint"
+      placeholder:
+          en_US: "Please input your Lybic API Endpoint"
+          zh_Hans: "请输入你的 Lybic API Endpoint"
+      help:
+        en_US: "Lybic API Endpoint is used to authenticate requests to the lybic.ai services API. Get the API Endpoint"
+        zh_Hans: "Lybic API Endpoint 用于认证请求到 lybic.ai API。 获取 API Endpoint。"
       url: https://lybic.ai/
