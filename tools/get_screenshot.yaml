@@ -1,9 +1,9 @@
 identity:
     name: get_screenshot
-    author: "lybic-team"
+    author: "lybic"
     label:
-        en_US: "Get Sandbox Screenshot"
-        zh_Hans: "获取沙盒截图"
+        en_US: "ScreenshotViewer"
+        zh_Hans: "浏览屏幕截图"
 description:
     human:
         en_US: "Get a screenshot from a Lybic sandbox."

@@ -1,14 +1,14 @@
 identity:
   name: "lybic-sandbox"
-  author: "lybic-team"
+  author: "lybic"
   label:
-    en_US: "lybic-sandbox"
-    zh_Hans: "lybic-sandbox"
+    en_US: "ActionExecutor"
+    zh_Hans: "动作执行器"
 description:
   human:
-    en_US: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
-    zh_Hans: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
-  llm: "Lybic is an edge sandbox infrastructure for AI agents. Through cloud-based sandbox environments (including virtual computers, mobile devices, and containers), it offer out-of-the-box GUI operation capabilities. Call this when you need to complete a/some task(s) in the sandbox.."
+    en_US: "Execute the computer(mobile,container)-use command on the Lybic sandbox"
+    zh_Hans: "在Lybic沙盒上执行computer(mobile,container)-use指令"
+  llm: "The Lybic action executor converts the user/LLM's description of the operation to be performed on the device into an external interface for the actual operation. Call this when you need to complete a/some task(s) in the sandbox.."
 parameters:
   - name: sandbox_id
     type: string

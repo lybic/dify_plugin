@@ -1,55 +1,15 @@
-<!--
-  ~ Dify Marketplace Template Icon
-  ~ Dify 市场模板图标
-  ~ Dify マーケットプレイステンプレートアイコン
-  ~
-  ~ WARNING / 警告 / 警告:
-  ~ 
-  ~ English: This is a TEMPLATE icon from Dify Marketplace only. You MUST NOT use this default icon in any way.
-  ~ Please replace it with your own custom icon before submit this plugin.
-  ~ 
-  ~ 中文: 这只是来自 Dify 市场的模板图标。您绝对不能以任何方式使用此默认图标。
-  ~ 请在提交此插件之前将其替换为您自己的自定义图标。
-  ~ 
-  ~ 日本語: これは Dify マーケットプレイスのテンプレートアイコンです。このデフォルトアイコンをいかなる方法でも使用してはいけません。
-  ~ このプラグインを提出する前に、独自のカスタムアイコンに置き換えてください。
-  ~ 
-  ~ DIFY_MARKETPLACE_TEMPLATE_ICON_DO_NOT_USE
-  -->
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_15255_46435)">
-<rect width="40" height="40" fill="#0033FF"/>
-<g filter="url(#filter0_n_15255_46435)">
-<rect width="40" height="40" fill="url(#paint0_linear_15255_46435)"/>
-</g>
-<path d="M28 10C28.5523 10 29 10.4477 29 11V16C29 16.5523 28.5523 17 28 17H23V30C23 30.5523 22.5523 31 22 31H18C17.4477 31 17 30.5523 17 30V17H11.5C10.9477 17 10.5 16.5523 10.5 16V13.618C10.5 13.2393 10.714 12.893 11.0528 12.7236L16.5 10H28ZM23 12H16.9721L12.5 14.2361V15H19V29H21V15H23V12ZM27 12H25V15H27V12Z" fill="white"/>
-</g>
+<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.90744 8.5L6.92712 10.2006L5.94534 8.5L4.96356 6.79942L3.98178 5.10029L3.16363 3.68314C3.11415 3.59714 3.0881 3.49966 3.0881 3.40044C3.0881 3.30122 3.11415 3.20374 3.16363 3.11774L3.98178 1.69912L4.96356 0L7.90744 5.10029C7.91218 5.10659 7.91611 5.11346 7.91913 5.12075C8.2121 5.6361 8.36515 6.21913 8.3631 6.81193C8.36105 7.40473 8.20397 7.98669 7.90744 8.5Z" fill="url(#paint0_linear_9_3)"/>
+<path d="M13.801 3.39971C13.9002 3.39963 13.9976 3.42571 14.0835 3.47531C14.1694 3.52491 14.2407 3.59628 14.2902 3.68222C14.3396 3.76816 14.3656 3.86564 14.3654 3.96481C14.3652 4.06398 14.3388 4.16134 14.289 4.24708L13.7966 5.10029L12.8149 6.79942L12.3225 7.65263C12.2731 7.73851 12.2019 7.80984 12.1161 7.85943C12.0303 7.90903 11.9329 7.93514 11.8338 7.93514C11.7347 7.93514 11.6374 7.90903 11.5516 7.85943C11.4658 7.80984 11.3946 7.73851 11.3451 7.65263L10.8528 6.79942L9.8666 5.10029L9.37425 4.24708C9.32469 4.16095 9.29871 4.06328 9.29892 3.96391C9.29913 3.86453 9.32553 3.76697 9.37545 3.68105C9.42537 3.59513 9.49706 3.52389 9.58329 3.4745C9.66951 3.4251 9.76723 3.39931 9.8666 3.39971H13.801Z" fill="url(#paint1_linear_9_3)"/>
+<path d="M10.6892 9.91715C10.7386 10.0031 10.7647 10.1006 10.7647 10.1999C10.7647 10.2991 10.7386 10.3966 10.6892 10.4826L7.09075 16.718C7.04106 16.8038 6.96968 16.875 6.88377 16.9245C6.79787 16.974 6.70046 17 6.60132 17H3L6.92566 10.2006L7.90598 8.5C8.20251 7.98668 8.35959 7.40473 8.36165 6.81193C8.3637 6.21912 8.21064 5.6361 7.91767 5.12074L10.6892 9.91715Z" fill="#00B1E9"/>
 <defs>
-<filter id="filter0_n_15255_46435" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feTurbulence type="fractalNoise" baseFrequency="2 2" stitchTiles="stitch" numOctaves="3" result="noise" seed="8033" />
-<feComponentTransfer in="noise" result="coloredNoise1">
-<feFuncR type="linear" slope="2" intercept="-0.5" />
-<feFuncG type="linear" slope="2" intercept="-0.5" />
-<feFuncB type="linear" slope="2" intercept="-0.5" />
-<feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
-</feComponentTransfer>
-<feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped" />
-<feComponentTransfer in="noise1Clipped" result="color1">
-<feFuncA type="table" tableValues="0 0.06" />
-</feComponentTransfer>
-<feMerge result="effect1_noise_15255_46435">
-<feMergeNode in="shape" />
-<feMergeNode in="color1" />
-</feMerge>
-</filter>
-<linearGradient id="paint0_linear_15255_46435" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-<stop stop-color="#1F4CFF"/>
-<stop offset="1" stop-color="#0033FF"/>
+<linearGradient id="paint0_linear_9_3" x1="4.50919" y1="9.67901" x2="5.91904" y2="4.59479" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#00B1E9"/>
 </linearGradient>
-<clipPath id="clip0_15255_46435">
-<rect width="40" height="40" fill="white"/>
-</clipPath>
+<linearGradient id="paint1_linear_9_3" x1="9.30266" y1="5.66715" x2="14.3664" y2="5.66715" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="0.65" stop-color="#00B1E9"/>
+</linearGradient>
 </defs>
 </svg>
