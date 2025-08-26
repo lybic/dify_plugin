@@ -1,12 +1,50 @@
-name: Plugin Publish Workflow
+name: Tag and Release
 
 on:
-  release:
-    types: [published]
+  pull_request:
+    types: [closed]
 
 jobs:
+  tag-and-release:
+    if: |
+     github.event.pull_request.merged == true &&
+     startsWith(github.event.pull_request.title, 'build: bump lybic dify plugin version to')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Extract tag name
+        id: extract_tag
+        run: |
+          TAG_NAME=$(echo "${{ github.event.pull_request.title }}" | sed 's/build: bump lybic dify plugin version to //')
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+
+      - name: Configure Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+      - name: Create and push tag
+        run: |
+          git tag ${{ steps.extract_tag.outputs.tag_name }}
+          git push origin ${{ steps.extract_tag.outputs.tag_name }}
+
+      - name: Create Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create ${{ steps.extract_tag.outputs.tag_name }} \
+            --title "Release ${{ steps.extract_tag.outputs.tag_name }}" \
+            --notes-file "CHANGELOGS/${{ steps.extract_tag.outputs.tag_name }}-release.md"
+
   publish:
     runs-on: ubuntu-latest
+    needs: tag-and-release
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -89,21 +127,22 @@ jobs:
 
           git branch -a
           echo "Waiting for branch to sync..."
-          sleep 10  # Wait 10 seconds for branch sync
+          # sleep 10  # Wait 10 seconds for branch sync
 
-      - name: Create PR via GitHub API
-        env:
-          # How to config the token:
-          # 1. Profile -> Settings -> Developer settings -> Personal access tokens -> Generate new token (with repo scope) -> Copy the token
-          # 2. Go to the target repository -> Settings -> Secrets and variables -> Actions -> New repository secret -> Add the token as PLUGIN_ACTION
-          GH_TOKEN: ${{ secrets.PLUGIN_ACTION }}
-        run: |
-          gh pr create \
-            --repo langgenius/dify-plugins \
-            --head "${{ steps.get_basic_info.outputs.author }}:${{ steps.get_basic_info.outputs.plugin_name }}-${{ steps.get_basic_info.outputs.version }}" \
-            --base main \
-            --title "bump ${{ steps.get_basic_info.outputs.plugin_name }} plugin to version ${{ steps.get_basic_info.outputs.version }}" \
-            --body "bump ${{ steps.get_basic_info.outputs.plugin_name }} plugin package to version ${{ steps.get_basic_info.outputs.version }}
-
-            Changes:
-            - Updated plugin package file" || echo "PR already exists or creation skipped." # Handle cases where PR already exists
+#      Not enable yet
+#      - name: Create PR via GitHub API
+#        env:
+#          # How to config the token:
+#          # 1. Profile -> Settings -> Developer settings -> Personal access tokens -> Generate new token (with repo scope) -> Copy the token
+#          # 2. Go to the target repository -> Settings -> Secrets and variables -> Actions -> New repository secret -> Add the token as PLUGIN_ACTION
+#          GH_TOKEN: ${{ secrets.PLUGIN_ACTION }}
+#        run: |
+#          gh pr create \
+#            --repo langgenius/dify-plugins \
+#            --head "${{ steps.get_basic_info.outputs.author }}:${{ steps.get_basic_info.outputs.plugin_name }}-${{ steps.get_basic_info.outputs.version }}" \
+#            --base main \
+#            --title "bump ${{ steps.get_basic_info.outputs.plugin_name }} plugin to version ${{ steps.get_basic_info.outputs.version }}" \
+#            --body "bump ${{ steps.get_basic_info.outputs.plugin_name }} plugin package to version ${{ steps.get_basic_info.outputs.version }}
+#
+#            Changes:
+#            - Updated plugin package file" || echo "PR already exists or creation skipped." # Handle cases where PR already exists
