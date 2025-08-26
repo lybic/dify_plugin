@@ -3,24 +3,20 @@ type: plugin
 author: lybic-team
 name: lybic-sandbox
 label:
-  en_US: lybic-sandbox
-  ja_JP: lybic-sandbox
-  zh_Hans: lybic-sandbox
-  pt_BR: lybic-sandbox
+  en_US: lybic agent sandbox
+  zh_Hans: lybic agent 沙盒平台
 description:
   en_US: Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities.
-  ja_JP: Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities.
-  zh_Hans: Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities.
-  pt_BR: Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities.
+  zh_Hans: Lybic 为 AI Agent提供顶级的基础设施解决方案。Lybic通过我们基于云端的沙盒环境（包括云虚机、云手机和云容器）提供开箱即用的 GUI 操作能力。
 icon: icon.svg
 icon_dark: icon-dark.svg
 resource:
   memory: 268435456
   permission:
     tool:
-      enabled: true
+      enabled: false
     model:
-      enabled: true
+      enabled: false
       llm: true
       text_embedding: false
       rerank: false
