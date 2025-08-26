@@ -1,12 +1,12 @@
 identity:
-  author: "lybic-team"
+  author: "lybic"
   name: "lybic-sandbox"
   label:
     en_US: "lybic-sandbox"
     zh_Hans: "lybic-sandbox"
   description:
     en_US: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
-    zh_Hans: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+    zh_Hans: "Lybic 为 AI Agent提供顶尖的基础设施解决方案。Lybic 通过我们基于云端的沙盒环境（包括虚拟机、云手机和云容器），提供开箱即用的 GUI 操作能力。"
   icon: "icon.svg"
 
 #########################################################################################

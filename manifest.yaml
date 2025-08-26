@@ -1,6 +1,6 @@
 version: 0.0.1
 type: plugin
-author: lybic-team
+author: lybic
 name: lybic-sandbox
 label:
   en_US: lybic agent sandbox
