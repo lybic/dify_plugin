@@ -86,7 +86,7 @@ credentials_for_provider:
         zh_Hans: "Lybic API Key 用于认证请求到 lybic.ai API。 获取 API Key。"
       url: https://lybic.ai/
   lybic_api_endpoint:
-      type: text
+      type: text-input
       required: false
       label:
           en_US: "Lybic API Endpoint"
