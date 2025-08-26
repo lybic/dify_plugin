@@ -1,0 +1,26 @@
+identity:
+  name: "lybic-sandbox"
+  author: "lybic-team"
+  label:
+    en_US: "lybic-sandbox"
+    zh_Hans: "lybic-sandbox"
+description:
+  human:
+    en_US: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+    zh_Hans: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+  llm: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: Query string
+      zh_Hans: 查询语句
+    human_description:
+      en_US: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+      zh_Hans: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+    llm_description: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+    form: llm
+extra:
+  python:
+    source: tools/lybic-sandbox.py

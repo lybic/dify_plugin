@@ -1,0 +1,86 @@
+identity:
+  author: "lybic-team"
+  name: "lybic-sandbox"
+  label:
+    en_US: "lybic-sandbox"
+    zh_Hans: "lybic-sandbox"
+  description:
+    en_US: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+    zh_Hans: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+  icon: "icon.svg"
+
+#########################################################################################
+# If you want to support OAuth, you can uncomment the following code.
+#########################################################################################
+# oauth_schema:
+#   client_schema:
+#     - name: "client_id"
+#       type: "secret-input"
+#       required: true
+#       url: https://example.com/oauth/authorize
+#       placeholder:
+#         en_US: "Please input your Client ID"
+#         zh_Hans: "请输入你的 Client ID"
+#         pt_BR: "Insira seu Client ID"
+#       help:
+#         en_US: "Client ID is used to authenticate requests to the example.com API."
+#         zh_Hans: "Client ID 用于认证请求到 example.com API。"
+#         pt_BR: "Client ID é usado para autenticar solicitações à API do example.com."
+#       label:
+#         zh_Hans: "Client ID"
+#         en_US: "Client ID"
+#     - name: "client_secret"
+#       type: "secret-input"
+#       required: true
+#       url: https://example.com/oauth/authorize
+#       placeholder:
+#         en_US: "Please input your Client Secret"
+#         zh_Hans: "请输入你的 Client Secret"
+#         pt_BR: "Insira seu Client Secret"
+#       help:
+#         en_US: "Client Secret is used to authenticate requests to the example.com API."
+#         zh_Hans: "Client Secret 用于认证请求到 example.com API。"
+#         pt_BR: "Client Secret é usado para autenticar solicitações à API do example.com."
+#       label:
+#         zh_Hans: "Client Secret"
+#         en_US: "Client Secret"
+#   credentials_schema:
+#     - name: "access_token"
+#       type: "secret-input"
+#       label:
+#         zh_Hans: "Access Token"
+#         en_US: "Access Token"
+
+tools:
+  - tools/lybic-sandbox.yaml
+extra:
+  python:
+    source: provider/lybic-sandbox.py
+
+credentials_for_provider:
+  lybic_orgnization_id:
+    type: secret-input
+    required: true
+    label:
+        en_US: "Lybic Organization ID"
+        zh_Hans: "Lybic 组织 ID"
+    placeholder:
+        en_US: "Please input your Lybic Organization ID"
+        zh_Hans: "请输入你的 Lybic 组织 ID"
+    help:
+        en_US: "Lybic Organization ID is used to authenticate requests to the lybic.ai services API. Get the Organization ID"
+        zh_Hans: "Lybic 组织 ID 用于认证请求到 lybic.ai API。 获取组织 ID。"
+    url: https://lybic.ai/
+  lybic_api_key:
+      type: secret-input
+      required: true
+      label:
+          en_US: "Lybic API Key"
+          zh_Hans: "Lybic API Key"
+      placeholder:
+          en_US: "Please input your Lybic API Key"
+          zh_Hans: "请输入你的 Lybic API Key"
+      help:
+        en_US: "Lybic API Key is used to authenticate requests to the lybic.ai services API. Get the API Key"
+        zh_Hans: "Lybic API Key 用于认证请求到 lybic.ai API。 获取 API Key。"
+      url: https://lybic.ai/
