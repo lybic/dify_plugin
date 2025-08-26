@@ -8,18 +8,29 @@ description:
   human:
     en_US: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
     zh_Hans: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
-  llm: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+  llm: "Lybic is an edge sandbox infrastructure for AI agents. Through cloud-based sandbox environments (including virtual computers, mobile devices, and containers), it offer out-of-the-box GUI operation capabilities. Call this when you need to complete a/some task(s) in the sandbox.."
 parameters:
-  - name: query
+  - name: sandbox_id
     type: string
     required: true
     label:
-      en_US: Query string
-      zh_Hans: 查询语句
+      en_US: Sandbox ID
+      zh_Hans: 沙盒ID
     human_description:
-      en_US: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
-      zh_Hans: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
-    llm_description: "Lybic provides a cutting-edge infrastructure solution for AI agents. Through our cloud-based sandbox environments (including virtual computers, mobile devices, and containers), we offer out-of-the-box GUI operation capabilities."
+      en_US: "The sandbox ID where the action is to be performed."
+      zh_Hans: "要执行动作所在的沙盒ID。"
+    llm_description: "The sandbox ID where the action is to be performed."
+    form: llm
+  - name: action
+    type: string
+    required: true
+    label:
+      en_US: Action
+      zh_Hans: 动作
+    human_description:
+      en_US: "It is a python statement similar to pyaotugui.click()"
+      zh_Hans: "它是一个与pyaotugui.click()相似的python语句。"
+    llm_description: "It is a python statement similar to `pyaotugui.click()`. When you call an action, make sure your input is in the form of `pyautogui.action()`."
     form: llm
 extra:
   python:
