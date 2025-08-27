@@ -33,13 +33,13 @@ class ActionParserTool(Tool):
 -   `pyautogui.hotkey('ctrl', 'c')`
 
 **Examples:**
--   User: "move the mouse to 100, 150" -> `pyautogui.moveTo(100, 150)`
--   User: "click the center of the screen" -> `pyautogui.click()`
--   User: "double click the icon" -> `pyautogui.doubleClick()`
--   User: "type hello world into the text field" -> `pyautogui.write('hello world')`
--   User: "press the enter key" -> `pyautogui.press('enter')`
--   User: "copy the selected text" -> `pyautogui.hotkey('ctrl', 'c')`
--   User: "right click at 250, 300" -> `pyautogui.rightClick(x=250, y=300)`
+-   User: "move the mouse to 100, 150" -> pyautogui.moveTo(100, 150)
+-   User: "click the center of the screen" -> pyautogui.click()
+-   User: "double click the icon" -> pyautogui.doubleClick()
+-   User: "type hello world into the text field" -> pyautogui.write('hello world')
+-   User: "press the enter key" -> pyautogui.press('enter')
+-   User: "copy the selected text" -> pyautogui.hotkey('ctrl', 'c')
+-   User: "right click at 250, 300" -> pyautogui.rightClick(x=250, y=300)
 """
 
     def _invoke(self, tool_parameters: dict[str, Any]) -> Generator[ToolInvokeMessage]:
@@ -62,10 +62,6 @@ class ActionParserTool(Tool):
             stream=False
         )
 
-        for chunk in response:
-            if chunk.delta.message:
-                full_response = chunk.delta.message.content
-                assert isinstance(full_response, str)
-
-                command = full_response.strip().replace('```python', '').replace('```', '').strip()
-                yield self.create_text_message(text=command)
+        full_response = response.message.content
+        command = full_response.strip().replace('```python', '').replace('`', '').replace('"', '').strip()
+        yield self.create_text_message(text=command)
