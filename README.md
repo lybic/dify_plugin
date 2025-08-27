@@ -104,3 +104,10 @@ output: a dify image object that can be viewed in dify other tools.
   ]
 }
 ```
+
+
+### Action Parser
+
+This is a tool that parses a user's natural language instruction(input) into a single, executable pyautogui-style command. 
+Use it to convert user requests like "click the button at 100, 200" into `pyautogui.click(100, 200)`.
+

@@ -54,6 +54,7 @@ identity:
 tools:
   - tools/lybic-sandbox.yaml
   - tools/get_screenshot.yaml
+  - tools/action_parser.yaml
 extra:
   python:
     source: provider/lybic-sandbox.py

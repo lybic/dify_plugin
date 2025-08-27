@@ -1,0 +1,44 @@
+identity:
+    name: action_parser
+    author: Gemini
+    label:
+        en_US: Action Parser
+        zh_Hans: 动作解析器
+description:
+    human:
+        en_US: Parses natural language into a pyautogui-style command.
+        zh_Hans: 将自然语言解析成 pyautogui 风格的命令。
+    llm: This tool parses a user's natural language instruction into a single, executable pyautogui-style command. Use it to convert user requests like "click the button at 100, 200" into `pyautogui.click(100, 200)`.
+parameters:
+    - name: instruction
+      type: string
+      required: true
+      label:
+          en_US: Natural language instruction
+          zh_Hans: 自然语言指令
+      human_description:
+          en_US: The instruction you want to convert into a command, e.g., "move mouse to 500, 500".
+          zh_Hans: 您希望转换为命令的指令，例如“移动鼠标到 500, 500”。
+      llm_description: The natural language instruction to be converted into a pyautogui command.
+      form: llm
+    - name: model
+      type: model-selector
+      scope: llm
+      required: true
+      label:
+        en_US: Model
+        zh_Hans: 使用的模型
+      human_description:
+        en_US: Model
+        zh_Hans: 使用的模型
+      llm_description: which Model to invoke
+      form: form
+extra:
+    python:
+        source: tools/action_parser.py
+output_schema:
+    type: object
+    properties:
+        command:
+            type: string
+            description: The parsed pyautogui-style command.
