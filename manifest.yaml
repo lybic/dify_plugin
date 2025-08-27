@@ -16,7 +16,7 @@ resource:
     tool:
       enabled: false
     model:
-      enabled: false
+      enabled: true
       llm: true
       text_embedding: false
       rerank: false
