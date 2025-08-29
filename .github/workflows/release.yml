@@ -49,25 +49,19 @@ jobs:
           git add CHANGELOGS/${NEW_TAG}-release.md
           git commit -m "docs(changelog): Generate changelog for ${NEW_TAG}"
 
-      - name: Update version in manifest.yaml
+      - name: Update version and push
         run: |
           # Remove 'v' prefix from tag if present (e.g., v0.4.0 -> 0.4.0)
           VERSION=${{ github.event.inputs.new_tag }}
           VERSION=${VERSION#v}
 
           # Update version in manifest.yaml
-          sed -i "s/^version: \".*\"/version: \"$VERSION\"/" manifest.yaml
+          sed -i "s/version: .*/version: $VERSION/" manifest.yaml
 
           # Commit the version update
           git add manifest.yaml
           git commit -m "build: bump lybic dify plugin version to $VERSION"
           git push --set-upstream origin changelog_${{ github.event.inputs.new_tag }}
-
-      - name: Commit and push changelog
-        run: |
-          git add CHANGELOGS/${{ github.event.inputs.new_tag }}-release.md
-          git commit -m "docs(changelog): Generate changelog for ${{ github.event.inputs.new_tag }}"
-          git push origin changelog_${{ github.event.inputs.new_tag }}
 
       - name: Create Changelog Pull Request
         env:
