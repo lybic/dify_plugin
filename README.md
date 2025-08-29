@@ -4,7 +4,7 @@
 - **Author** : lybic
 - **Version** : 0.0.1
 - **Type:** : tool
-- **Repository** : https://github.com/lybic/dify_plugin
+- **Repository** : https://github.com/lybic/lybic-tool-dify
 - **Marketplace** : https://marketplace.dify.ai/plugins/lybic/sandbox_tools
 
 ## Description

@@ -42,6 +42,7 @@ parameters:
       en_US: "The LLM provider used to generate the grounding text."
       zh_Hans: "用于生成grounding文本的LLM提供者。"
     llm_description: "The LLM provider used to generate the grounding text."
+    form: llm
     options:
       - value: "ui-tars"
         label:
