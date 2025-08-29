@@ -6,6 +6,18 @@ from dify_plugin import Tool
 from dify_plugin.entities.tool import ToolInvokeMessage
 from dify_plugin.errors.tool import ToolProviderCredentialValidationError
 from lybic import LybicClient, ComputerUse, Sandbox
+
+def _run_async(coro, timeout: int = 60):
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = None
+    if loop and loop.is_running():
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=1) as ex:
+            return ex.submit(lambda: asyncio.run(asyncio.wait_for(coro, timeout))).result()
+    return asyncio.run(asyncio.wait_for(coro, timeout))
+
 async def execute_action(org_id: str, api_key: str, endpoint:str, sandbox_id: str, action: str, provider:str):
     async with LybicClient(org_id=org_id, api_key=api_key, endpoint=endpoint) as client:
         computer_use = ComputerUse(client)
@@ -17,7 +29,7 @@ async def execute_action(org_id: str, api_key: str, endpoint:str, sandbox_id: st
         )
         for action in computer_use_action.actions:
             await sandbox.execute_computer_use_action(sandbox_id=sandbox_id, action=action)
-        return computer_use_action.model_dump_json()
+        return computer_use_action.model_dump()
 
 
 class LybicSandboxTool(Tool):
@@ -30,7 +42,7 @@ class LybicSandboxTool(Tool):
         action = tool_parameters.get("action")
 
         if not provider or not sandbox_id or not action:
-            raise Exception("Error: sandbox_id and action are required.")
+            raise ValueError("Error: grounding_provider, sandbox_id and action are required.")
 
         # WARNING: Using eval on untrusted input is a security risk.
         # The 'action' parameter should be carefully validated or sanitized
@@ -46,14 +58,15 @@ class LybicSandboxTool(Tool):
             raise ToolProviderCredentialValidationError("Error: Lybic credentials are not configured.")
 
         try:
-            yield self.create_json_message({
-                "status": "success",
-                "result": asyncio.run(execute_action(org_id=org_id,
+            result = _run_async(execute_action(org_id=org_id,
                                                      api_key=api_key,
                                                      endpoint=endpoint,
                                                      sandbox_id=sandbox_id,
                                                      action=action,
                                                      provider=provider))
+            yield self.create_json_message({
+                "status": "success",
+                "result": result
             })
         except Exception as e:
             raise Exception(f"Error executing action: {e}")
