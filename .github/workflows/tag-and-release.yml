@@ -45,9 +45,17 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: tag-and-release
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+
+      - name: Extract tag name
+        id: extract_tag_publish
+        run: |
+          TAG_NAME=$(echo "${{ github.event.pull_request.title }}" | sed 's/build: bump lybic dify plugin version to //')
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
 
       - name: Download CLI tool
         run: |
@@ -77,21 +85,37 @@ jobs:
           echo "Plugin author: $AUTHOR"
           echo "author=$AUTHOR" >> $GITHUB_OUTPUT
 
-      - name: Package Plugin
+      - name: Package and Sign Plugin
         id: package
+        env:
+          SIGN_KEY_LYBIC: ${{ secrets.SIGN_KEY_LYBIC }}
         run: |
           cd $GITHUB_WORKSPACE
           PACKAGE_NAME="${{ steps.get_basic_info.outputs.plugin_name }}-${{ steps.get_basic_info.outputs.version }}.difypkg"
+          SIGNED_PACKAGE_NAME="${{ steps.get_basic_info.outputs.plugin_name }}-${{ steps.get_basic_info.outputs.version }}.signed.difypkg"
           $RUNNER_TEMP/bin/dify-plugin-linux-amd64 plugin package . -o "$PACKAGE_NAME"
-
+          echo "$SIGN_KEY_LYBIC" > dify-lybic.private.pem
+          $RUNNER_TEMP/bin/dify-plugin-linux-amd64 signature sign "$PACKAGE_NAME" -p dify-lybic.private.pem
           echo "Package result:"
           ls -la "$PACKAGE_NAME"
+          ls -la "$SIGNED_PACKAGE_NAME"
           echo "package_name=$PACKAGE_NAME" >> $GITHUB_OUTPUT
-
+          echo "signed_package_name=$SIGNED_PACKAGE_NAME" >> $GITHUB_OUTPUT
           echo "\nFull file path:"
           pwd
           echo "\nDirectory structure:"
           tree || ls -R
+
+      - name: Update Github Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "${{ vars.RELEASE_PUBLIC_KEY }}" > public_key.pem
+          gh release upload ${{ steps.extract_tag_publish.outputs.tag_name }} \
+            "$GITHUB_WORKSPACE/${{ steps.package.outputs.package_name }}" \
+            "$GITHUB_WORKSPACE/${{ steps.package.outputs.signed_package_name }}" \
+            "$GITHUB_WORKSPACE/public_key.pem" \
+            --clobber
 
       - name: Checkout target repo
         uses: actions/checkout@v5
